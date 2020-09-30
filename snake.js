@@ -71,12 +71,15 @@ function Snake(){
   }
 
   this.die = function() {
-    this.tail.forEach(tail => {
-      if (this.x === tail.x && this.y === tail.y){
-        console.log("OUCH")
-        alert("you died")
-        this.reset()
-      }})
+    const colision = this.tail.some(tail => {
+      return (this.x === tail.x && this.y === tail.y)
+    })
+    if(!colision){
+      return
+    }
+    console.log("OUCH")
+    alert("you died")
+    this.reset()
   }  
 
   this.reset = function(){
